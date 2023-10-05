@@ -1,0 +1,31 @@
+# Arquivos de compilação Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtualenv (ambiente virtual Python)
+venv/
+env/
+*.env
+
+# Logs e arquivos temporários
+*.log
+*.swp
+.DS_Store
+Thumbs.db
+
+# Arquivos de configuração
+*.config
+*.cfg
+*.conf
+
+# Arquivos de ambiente
+.env
+.env.local
+.env.*.local
+
+# Dependências (exemplo: para o uso do pipenv)
+Pipfile.lock
+
+/.vscode

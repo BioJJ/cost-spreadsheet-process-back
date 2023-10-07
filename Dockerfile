@@ -1,20 +1,17 @@
-# Use uma imagem Python 3.8 como base
+# Use uma imagem Python como base
 FROM python:3.8
 
-# Define o diretório de trabalho no contêiner
+# Diretório de trabalho no contêiner
 WORKDIR /app
 
-# Copie o arquivo requirements.txt para o diretório de trabalho
-COPY requirements.txt .
-
-# Instale as dependências Python
-RUN pip install -r requirements.txt
-
-# Copie todos os arquivos do projeto para o diretório de trabalho
+# Copie o arquivo de código fonte para o contêiner
 COPY . .
 
-# Exponha a porta em que a API Python será executada (5000)
-EXPOSE 5000
+# Atualize o pip
+RUN pip install --upgrade pip
 
-# Comando para iniciar a aplicação
-CMD ["python", "app.py"]
+# Instale as dependências diretamente
+RUN pip install flask pandas numpy flask-cors
+
+# Comando para iniciar a aplicação Flask
+CMD [ "python", "app.py" ]

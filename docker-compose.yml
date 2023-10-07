@@ -1,0 +1,33 @@
+version: '3'
+services:
+  nestjs-app:
+    build:
+      context: ./nestjs-app
+    ports:
+      - "3000:3000"
+    environment:
+      POSTGRES_HOST: your_postgres_host
+      POSTGRES_PORT: your_postgres_port
+      POSTGRES_USER: your_postgres_user
+      POSTGRES_PASSWORD: your_postgres_password
+      POSTGRES_DB: your_postgres_db
+      JWT_SECRET_KEY: your_jwt_secret_key
+
+  python-app:
+    build:
+      context: ./python-app
+    ports:
+      - "5000:5000"
+    # Defina as variáveis de ambiente Python conforme necessário
+    environment:
+      SOME_ENV_VAR: some_value
+    # Defina quaisquer outras configurações de ambiente aqui
+
+  postgres:
+    image: postgres:13
+    environment:
+      POSTGRES_USER: your_postgres_user
+      POSTGRES_PASSWORD: your_postgres_password
+      POSTGRES_DB: your_postgres_db
+    ports:
+      - "5432:5432"

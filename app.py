@@ -1,3 +1,4 @@
+import os
 from flask import Flask, request, jsonify
 import pandas as pd
 import numpy as np
@@ -6,7 +7,8 @@ from flask_cors import CORS
 app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": "*"}})
 
-@app.route('/test',methods=['GET'])
+
+@app.route('/test', methods=['GET'])
 def test():
     return jsonify("acesso livre")
 
@@ -38,4 +40,4 @@ def processar_planilha():
 
 
 if __name__ == '__main__':
-    app.run(port=5000, host='localhost', debug=True)
+    app.run(host="0.0.0.0", port=os.getenv('PORT', 5000))
